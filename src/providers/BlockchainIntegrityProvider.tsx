@@ -126,7 +126,7 @@ async function verifyFromRawBlocks(blocks: RawBlock[]): Promise<InvalidBlockInfo
 // Fetch raw blockchain_data.json directly from disk (via Vite middleware)
 // ──────────────────────────────────────────
 async function fetchRawBlocks(): Promise<RawBlock[]> {
-  const response = await fetch(`/blockchain-data?_=${Date.now()}`, {
+  const response = await fetch(`/api/blockchain-data?_=${Date.now()}`, {
     cache: "no-store",
     headers: { "Pragma": "no-cache" },
   })
