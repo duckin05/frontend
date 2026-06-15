@@ -55,8 +55,9 @@ export function BlockchainPage() {
   const handleExport = useCallback(async () => {
     try {
       const response = await blockchainService.exportReport()
+      const contentType = response.headers?.["content-type"]
       const blob = new Blob([response.data], {
-        type: response.headers?.["content-type"] || "application/octet-stream",
+        type: typeof contentType === "string" ? contentType : "application/octet-stream",
       })
       const url = window.URL.createObjectURL(blob)
       const a = document.createElement("a")
